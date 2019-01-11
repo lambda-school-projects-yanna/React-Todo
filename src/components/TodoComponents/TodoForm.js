@@ -7,17 +7,14 @@ function TodoForm(props) {
     return (
         <form onSubmit={props.addNew} >
             <input 
-                placeholder='todo item' 
-                value={props.newTodo}
                 name='newTodo'
-
-                onChange={
-                    props.changeHandler}
+                value={props.newTodo}
+                placeholder='todo item' 
+                onChange={props.changeHandler}
             />
             <button type='submit'>Add Todo</button>
-            <button>Clear Completed</button>
+            <button onClick={props.clearComplete}>Clear Completed</button>
         </form>
-
     );
 };
 

@@ -4,7 +4,7 @@ import Todo from './Todo';
 function TodoList(props) {
     return (
         props.data.map(item => {
-            return (<Todo task={item.task}/>)})
+            return (<Todo item={item} toggleComplete={props.toggleComplete}/>)})
     );
 };
 
