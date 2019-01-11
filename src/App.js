@@ -6,15 +6,43 @@ class App extends React.Component {
   constructor() {
     super();
     this.state= {
-      toDos: todoData
+      toDos: todoData,
+      newTodo: ''
     };
   }
+
+  changeHandler = (ev) => {
+    this.setState(
+      {[ev.target.name]: ev.target.value});
+      console.log('changeHandler is working');
+  };
+
+  addNew = ev => {
+    ev.preventDefault();
+    this.setState({
+      toDos: [
+        ...this.state.toDos, 
+        {task: this.state.newTodo}
+      ],
+      newTodo: ''
+    });
+    console.log('add new is working');
+    console.log(this.state.newTodo);
+    console.log(this.state.toDos);
+  };
 
   render() {
     return (
       <div className='App'>
-        <TodoList data={this.state.toDos}/>
-        <TodoForm/>
+        <TodoList 
+          data={this.state.toDos}
+        />
+        <TodoForm 
+          changeHandler={this.changeHandler}
+          addNew={this.addNew}
+          newTodo={this.newTodo}
+        />
+
       </div>
     )
   }
